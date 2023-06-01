@@ -1,0 +1,51 @@
+S3 classification
+
+C2  S3DiscoveryLamCalls = 1
+C3  S3DataProfilerLamCalls = NoOfTotalFiles/BatchSize
+C4  S3AggregatorV2LamCalls = S3DataProfilerLamCalls/BatchSize
+C5  S3AggregatorLamCalls = S3DataProfilerLamCalls/BatchSize
+C6  S3AggregatorClassificationResultAggregationLamCalls = NoOfBuckets
+C7  S3TotalLamCalls = S3DiscoveryLamCalls+S3DataProfilerLamCalls+S3AggregatorV2LamCalls+S3AggregatorLamCalls+S3AggregatorClassificationResultAggregationLamCalls
+
+D2  S3DiscoveryAvgTimeInms = 900000
+D3  S3DataProfilerAvgTimeInms = avgSize*BatchSize*DataProfilerAvgTimePerMB
+D4  S3AggregatorV2AvgTimeInms = 1680
+D5  S3AggregatorAvgTimeInms = 315
+D6  S3AggregatorClassificationResultAggregationAvgTimeInms = 900000
+D7  S3TotalAvgTimeInms = S3DiscoveryAvgTimeInms+S3DataProfilerAvgTimeInms+S3AggregatorV2AvgTimeInms+S3AggregatorAvgTimeInms+S3AggregatorClassificationResultAggregationAvgTimeInms
+
+S3DiscoveryExecTime =
+S3
+S3
+S3
+S3
+S3
+
+S3TotalExecutionTimeInHrs = 117.72
+
+S3DiscoveryMonthComputeCharge = (S3DiscoveryLamCalls+S3AggregatorClassificationResultAggregationLamCalls)*S3DiscoveryAvgTimeInms*MemoryInGB*ConvertFromMillisecondsToSeconds*StandardCost
+S3DataProfilerMonthComputeCharge = S3DataProfilerLamCalls*S3DataProfilerAvgTimeInms*MemoryInGB*ConvertFromMillisecondsToSeconds*StandardCost
+S3AggregatorV2MonthComputeCharge = S3AggregatorV2LamCalls*S3AggregatorV2AvgTimeInms*MemoryInGB*ConvertFromMillisecondsToSeconds*StandardCost
+S3AggregatorMonthComputeCharge = S3AggregatorLamCalls*S3AggregatorAvgTimeInms*MemoryInGB*ConvertFromMillisecondsToSeconds*StandardCost
+
+S3DiscoveryMonthlyReqCharge = (S3DiscoveryLamCalls+S3AggregatorClassificationResultAggregationLamCalls)*PerRequestCharge
+S3DataProfilerMonthlyReqCharge = S3DataProfilerLamCalls*PerRequestCharge
+S3AggregatorV2MonthlyReqCharge = S3AggregatorV2LamCalls*PerRequestCharge
+S3AggregatorMonthlyReqCharge = S3AggregatorLamCalls*PerRequestCharge
+
+S3DiscoveryTotalAWSCost = S3DiscoveryMonthComputeCharge+S3DiscoveryMonthlyReqCharge
+S3DataProfilerTotalAWSCost = S3DataProfilerMonthComputeCharge+S3DataProfilerMonthlyReqCharge
+S3AggregatorV2TotalAWSCost = S3AggregatorV2MonthComputeCharge+S3AggregatorV2MonthlyReqCharge
+S3AggregatorTotalAWSCost = S3AggregatorMonthComputeCharge+S3AggregatorMonthlyReqCharge
+S3TotalOfTotalAWSCost = S3DiscoveryTotalAWSCost+S3DataProfilerTotalAWSCost+S3AggregatorV2TotalAWSCost+S3AggregatorTotalAWSCost
+
+
+RDS Classification 
+
+RDSSnapshot = 
+RDSExportToS3 =
+RDSDataProfiler =
+RDSSnapshotAggregatorV2 =
+RDSAggregator =
+RDSAggregatorClassificationResultAggregation =
+RDSTotal =

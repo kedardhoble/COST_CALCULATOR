@@ -1,0 +1,18 @@
+.main{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    text-align: center;
+}
+
+.services{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.totalSize>h5{
+    display: flex;
+    margin-left: 10px;
+}
+
+

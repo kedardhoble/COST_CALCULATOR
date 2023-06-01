@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+        <h3>COST CALCULATOR FOR AWS SERVICES</h3>
+        <h4>Select the service of which you want to calculate the cost</h4>
+        <!-- service buttons -->
+        <!-- <div class="services">
+            <div><input type="radio" id="html" name="fav_language" value="HTML">
+                <label for="html">S3</label></div>
+            <div><input type="radio" id="css" name="fav_language" value="CSS">
+                <label for="css">RDS</label></div>
+            <div> <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                <label for="javascript">Self Managed</label></div>
+        </div> -->
+        <!-- service buttons -->
+
+        <div class="container">
+            <!-- S3 cost  -->
+            <h5>S3 Cost</h5>
+            <div class="s3 container-fluid">
+                <div class="form-floating mt-3 nofbuckets">
+                    <input type="number" min=1 class="form-control" id="noOfBuckets" placeholder="name@example.com">
+                    <label for="noOfBuckets">Number of buckets</label>
+                </div><br>
+                <div class="form-floating NoOftotalFiles">
+                    <input type="number" min=1 class="form-control" id="files" placeholder="Password">
+                    <label for="files">No of total files</label>
+                </div><br>
+                <div class="form-floating avgSize">
+                    <input type="numer" min=1 class="form-control avg" onchange="console.log()" id="avg" placeholder="Password">
+                    <label for="avg">Average Size of files in MBs</label>
+                </div>
+                <div class="mt-3">
+                    <h5>Total size in GBs : <span class="totalSize"></span></h5>
+                    <h3 id="output_tag"></h3>
+                </div>
+                <div class="mt-3">
+                    <h5>Total size in GBs : <span class="totalSize"></span></h5>
+                    <h3 id="output_tag"></h3>
+                </div>
+            </div>
+            <!-- S3 cost  -->
+
+            <!-- RDS cost -->
+            <h5>RDS Cost</h5>
+            <div class="RDS container-fluid">
+                <div class="form-floating mt-3 NoOfRDSInstancesOrClusters">
+                    <input type="number" min=1 class="form-control" id="NoOfRDSInstancesOrClusters"
+                        placeholder="name@example.com">
+                    <label for="NoOfRDSInstancesOrClusters">Number of RDS Instance or Cluster</label>
+                </div><br>
+                <div class="form-floating SizeOfDataInGB">
+                    <input type="number" min=1 class="form-control" id="SizeOfDataInGB" placeholder="Password">
+                    <label for="SizeOfDataInGB">Size of data in GBs</label>
+                </div><br>
+                <div class="form-floating NumberOfTables">
+                    <input type="numer" min=1 class="form-control" id="NumberOfTables" placeholder="Password">
+                    <label for="NumberOfTables">Average Size of files in MBs</label>
+                </div>
+            </div>
+            <!-- RDS cost -->
+
+            <!-- Self Managed -->
+            <h5>Self Managed Cost</h5>
+            <div class="selfManaged container-fluid">
+                <div class="form-floating mt-3 NoOfEC2Instances">
+                    <input type="number" min=1 class="form-control" id="NoOfEC2Instances"
+                        placeholder="name@example.com">
+                    <label for="NoOfEC2Instances">Number of EC2 Instances</label>
+                </div><br>
+                <div class="form-floating NoOfVolumes">
+                    <input type="number" min=1 class="form-control" id="NoOfVolumes" placeholder="Password">
+                    <label for="NoOfVolumes">Size of data in GBs</label>
+                </div><br>
+                <div class="form-floating SizeOfEBSVolumeInGBs">
+                    <input type="numer" min=1 class="form-control" id="SizeOfEBSVolumeInGBs" placeholder="Password">
+                    <label for="SizeOfEBSVolumeInGBs">Average Size of files in MBs</label>
+                </div>
+            </div>
+            <!-- Self Managed -->
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="./app.js" type="module"></script>
