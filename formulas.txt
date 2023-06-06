@@ -10,7 +10,7 @@ C7  S3TotalLamCalls = S3DiscoveryLamCalls+S3DataProfilerLamCalls+S3AggregatorV2L
 D2  S3DiscoveryAvgTimeInms = 900000
 D3  S3DataProfilerAvgTimeInms = avgSize*BatchSize*DataProfilerAvgTimePerMB
 D4  S3AggregatorV2AvgTimeInms = 1680
-D5  S3AggregatorAvgTimeInms = 315
+D5  S3AggregatorAvgTimeInms = 315NoOfBuckets
 D6  S3AggregatorClassificationResultAggregationAvgTimeInms = 900000
 D7  S3TotalAvgTimeInms = S3DiscoveryAvgTimeInms+S3DataProfilerAvgTimeInms+S3AggregatorV2AvgTimeInms+S3AggregatorAvgTimeInms+S3AggregatorClassificationResultAggregationAvgTimeInms
 
@@ -42,10 +42,10 @@ S3TotalOfTotalAWSCost = S3DiscoveryTotalAWSCost+S3DataProfilerTotalAWSCost+S3Agg
 
 RDS Classification 
 
-RDSSnapshot = 
-RDSExportToS3 =
-RDSDataProfiler =
-RDSSnapshotAggregatorV2 =
-RDSAggregator =
-RDSAggregatorClassificationResultAggregation =
-RDSTotal =
+RDSSnapshotLamCalls = (+)
+RDSExportToS3LamCalls =
+RDSDataProfilerLamCalls =
+RDSSnapshotAggregatorV2LamCalls =
+RDSAggregatorLamcalls =
+RDSAggregatorClassificationResultAggregationLamcalls =
+RDSTotalLamcalls = (+RDSSnapshotLamCalls+RDSExportToS3LamCalls+RDSDataProfilerLamCalls+RDSSnapshotAggregatorV2LamCalls+RDSAggregatorLamcalls+RDSAggregatorClassificationResultAggregationLamcalls)

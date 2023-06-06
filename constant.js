@@ -7,14 +7,14 @@ export const BatchSize=10
 export const DataProfilerAvgTimePerMB=50000
 
 
-export let noOfBuckets = NoOfBuckets
-export let totalFiles = NoOfTotalFiles
-export let avgSize = AverageSizeOfFilesInMBs
-export let totalSize = TotalSizeInGB
+// export let noOfBuckets = NoOfBuckets
+// export let totalFiles = NoOfTotalFiles
+// export let avgSize = AverageSizeOfFilesInMBs
+// export let totalSize = TotalSizeInGB
 
-export let NoOfRDSInstancesOrClusters = NoOfRDSInstances/clusters
-export let SizeOfDataInGB = SizeOfDataInGB
-export let NumberOfTables = NumberOfTables
+// export let NoOfRDSInstancesOrClusters = NoOfRDSInstances/clusters
+// export let SizeOfDataInGB = SizeOfDataInGB
+// export let NumberOfTables = NumberOfTables
 
 // export let NoOfEC2Instances =NoOfEC2Instances
 // export let No Of Volumes =
