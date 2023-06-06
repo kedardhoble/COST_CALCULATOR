@@ -215,14 +215,11 @@ datasizeInGBEC2.addEventListener("input", changeHandlerSelf)
 avgSizeEBS.addEventListener("input", changeHandlerSelf)
 
 function displayHandlerS3(button) {
-    console.log("Button",button)
     let divs = ["lambdaCallsS3", "avgTimeS3", "computeChargeS3", "requestChargeS3", "totalChargeS3"]
     for(let i=0; i<divs.length; i++){
         if(divs[i] == button){
-            console.log("Reached")
             let x = document.getElementById(button)
             if (x.style.display === "none") {
-                console.log("Change CSS")
             x.style.display = "block";
             } else {
             x.style.display = "none";

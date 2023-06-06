@@ -15,7 +15,7 @@
     margin-left: 10px;
 }
 
-#lambdaCallsS3, #avgTimeS3, #computeChargeS3, #requestChargeS3, #totalChargeS3{
+/* #lambdaCallsS3, #avgTimeS3, #computeChargeS3, #requestChargeS3, #totalChargeS3{
     display: none;
 }
 
@@ -25,5 +25,5 @@
 
 #lambdaCallsSelf, #avgTimeSelf, #compAndReqChargeSelf{
     display: none;
-}
+} */
 
