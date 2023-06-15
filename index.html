@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <link rel="stylesheet" href="./style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="main">
-        <h3>COST CALCULATOR FOR AWS SERVICES</h3>
-        <!-- service buttons 
+      <h3>COST CALCULATOR FOR AWS SERVICES</h3>
+      <!-- service buttons 
          <div class="services">
             <div><input type="radio" id="html" name="fav_language" value="HTML">
                 <label for="html">S3</label></div>
@@ -28,334 +33,602 @@
         </div>
         service buttons -->
 
-        <div class="container">
-           
-            <h5>S3 Cost</h5>
-            <div class="s3 container-fluid">
-                <div class="form-floating mt-3 nofbuckets">
-                    <input type="number" min=1 class="form-control" id="noOfBuckets" placeholder="name@example.com">
-                    <label for="noOfBuckets">Number of buckets</label>
-                </div><br>
-                <div class="form-floating NoOftotalFiles">
-                    <input type="number" min=1 class="form-control" id="files" placeholder="Password">
-                    <label for="files">No of total files</label>
-                </div><br>
-                <div class="form-floating avgSize">
-                    <input type="numer" min=1 class="form-control avg" id="avg" placeholder="Password">
-                    <label for="avg">Average Size of files in MBs</label>
-                </div>
-                <div class="mt-3">
-                    <h5 >Total size in GBs : <span id="totalSize"></span></h5>
-                </div>
-                <div class="container d-flex justify-content-evenly">
-                    <button class="btn btn-info me-1" id="displayLamCalls">Display S3 Lambda Calls</button>
-                    <button class="btn btn-info me-1" id="displayAvgTime">Display S3 Average Time</button>
-                    <button class="btn btn-info me-1" id="displayCompCharge">Display S3 Compute Charges</button>
-                    <button class="btn btn-info me-1" id="displayreqCharge">Display S3 Request Charges</button>
-                    <button class="btn btn-info" id="displayTotalCharge">Display S3 Total Charges</button>
-                </div>
+      <div class="container">
+        <h5>S3 Cost</h5>
+        <div class="s3 container-fluid">
+          <div class="form-floating mt-3 nofbuckets">
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              id="noOfBuckets"
+              placeholder="123"
+            />
+            <label for="noOfBuckets">Number of buckets</label>
+          </div>
+          <br />
+          <div class="form-floating NoOftotalFiles">
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              id="files"
+              placeholder="123"
+            />
+            <label for="files">No of total files</label>
+          </div>
+          <br />
+          <div class="form-floating avgSize">
+            <input
+              type="numer"
+              min="1"
+              class="form-control avg"
+              id="avg"
+              placeholder="123"
+            />
+            <label for="avg">Average Size of files in MBs</label>
+          </div>
+          <div class="mt-3">
+            <h5>Total size in GBs : <span id="totalSize"></span></h5>
+          </div>
+          <div class="container d-flex justify-content-evenly">
+            <button class="btn btn-info me-1" id="displayLamCalls">
+              Display S3 Lambda Calls
+            </button>
+            <button class="btn btn-info me-1" id="displayAvgTime">
+              Display S3 Average Time
+            </button>
+            <button class="btn btn-info me-1" id="displayCompCharge">
+              Display S3 Compute Charges
+            </button>
+            <button class="btn btn-info me-1" id="displayreqCharge">
+              Display S3 Request Charges
+            </button>
+            <button class="btn btn-info" id="displayTotalCharge">
+              Display S3 Total Charges
+            </button>
+          </div>
 
-                <div id="lambdaCallsS3" style="display:none">
-                    <div class="mt-3">
-                        <h5>S3 Discovery Lambda Calls: <span id="S3DiscoveryLamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Data Profiler Lambda Calls: <span id="S3DataProfilerLamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator V2 Lambda Calls: <span id="S3AggregatorV2LamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator Lambda Calls: <span id="S3AggregatorLamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator Classification Result Aggregation Lambda Calls: <span id="S3AggregatorClassificationResultAggregationLamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Total Lambda Calls: <span id="S3TotalLamCalls"></span></h5>
-                    </div>
-                </div>
-                <div id="avgTimeS3" style="display:none">
-                    <div class="mt-3">
-                        <h5>S3 Discovery Average Time In ms: <span id="S3DiscoveryAvgTimeInms"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 DataProfiler Average Time In ms: <span id="S3DataProfilerAvgTimeInms"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator V2 Average Time In ms: <span id="S3AggregatorV2AvgTimeInms"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator Average Time In ms: <span id="S3AggregatorAvgTimeInms"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator Classification Result Aggregation Avg Time In ms: <span id="S3AggregatorClassificationResultAggregationAvgTimeInms"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3TotalAvgTimeInms: <span id="S3TotalAvgTimeInms"></span></h5>
-                    </div>
-                </div>
-                <div id="computeChargeS3" style="display:none">  
-                    <div class="mt-3">
-                        <h5>S3 Discovery Month Compute Charge: <span id="S3DiscoveryMonthComputeCharge"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 DataProfiler Month Compute Charge: <span id="S3DataProfilerMonthComputeCharge"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator V2 Month Compute Charge: <span id="S3AggregatorV2MonthComputeCharge"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator Month Compute Charge: <span id="S3AggregatorMonthComputeCharge"></span></h5>
-                    </div>
-                </div>
-                <div id="requestChargeS3" style="display:none">
-                    <div class="mt-3">
-                        <h5>S3 Discovery Monthly Req Charge: <span id="S3DiscoveryMonthlyReqCharge"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 DataProfiler Monthly Req Charge: <span id="S3DataProfilerMonthlyReqCharge"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator V2 Monthly Req Charge: <span id="S3AggregatorV2MonthlyReqCharge"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator Monthly Req Charge: <span id="S3AggregatorMonthlyReqCharge"></span></h5>
-                    </div>
-                </div>
-                <div id="totalChargeS3" style="display:none">
-                    <div class="mt-3">
-                        <h5>S3 Discovery Total AWS Cost: <span id="S3DiscoveryTotalAWSCost"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 DataProfiler Total AWS Cost: <span id="S3DataProfilerTotalAWSCost"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator V2 Total AWS Cost: <span id="S3AggregatorV2TotalAWSCost"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>S3 Aggregator Total AWS Cost: <span id="S3AggregatorTotalAWSCost"></span></h5>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <h5>S3 Final AWS Cost: <span id="S3TotalOfTotalAWSCost"></span></h5>
-                </div>
-                
+          <div id="lambdaCallsS3" style="display: none">
+            <div class="mt-3">
+              <h5>
+                S3 Discovery Lambda Calls:
+                <span id="S3DiscoveryLamCalls"></span>
+              </h5>
             </div>
-            
-            <h5>RDS Cost</h5>
-            <div class="RDS container-fluid">
-                <div class="form-floating mt-3 NoOfRDSInstancesOrClusters">
-                    <input type="number" min=1 class="form-control" id="NoOfRDSInstancesOrClusters" placeholder="name@example.com">
-                    <label for="NoOfRDSInstancesOrClusters">Number of RDS Instance or Cluster</label>
-                </div><br>
-                <div class="form-floating SizeOfDataInGB">
-                    <input type="number" min=1 class="form-control" id="SizeOfDataInGB" placeholder="Password">
-                    <label for="SizeOfDataInGB">Size of data in GBs</label>
-                </div><br>
-                <div class="form-floating NumberOfTables">
-                    <input type="numer" min=1 class="form-control" id="NumberOfTables" placeholder="Password">
-                    <label for="NumberOfTables">Number of tables</label>
-                </div>
-                <div class="mt-3 container d-flex justify-content-evenly">
-                    <button class="btn btn-info me-1" id="displayLamCallsRDS">Display RDS Lambda Calls</button>
-                    <button class="btn btn-info me-1" id="displayAvgTimeRDS">Display RDS Average Time</button>
-                    <button class="btn btn-info me-1" id="displayCompChargeRDS">Display RDS Compute Charges</button>
-                    <button class="btn btn-info me-1" id="displayreqChargeRDS">Display RDS Request Charges</button>
-                    <button class="btn btn-info" id="displayTotalChargeRDS">Display RDS Total Charges</button>
-                </div>
-
-                <div id="lambdaCallsRDS" style="display:none">
-                    <div class="mt-3">
-                        <h5>RDS Snapshot Lambda  Calls: <span id="RDSSnapshotLamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Export To S3 Lambda Calls: <span id="RDSExportToS3LamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS DataProfiler Lambda Calls: <span id="RDSDataProfilerLamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator V2 Lambda Calls: <span id="RDSAggregatorV2LamCalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator Lambda calls: <span id="RDSAggregatorLamcalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator Classification Result Aggregation Lambda calls: <span id="RDSAggregatorClassificationResultAggregationLamcalls"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Total Lambda calls: <span id="RDSTotalLamcalls"></span></h5>
-                    </div>
-                </div>
-                
-                <div id="avgTimeRDS" style="display:none">
-                    <div class="mt-3">
-                        <h5>RDS Snapshot Avg Time in milliseconds: <span id="RDSSnapshotAvgTimeinmilliseconds"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Export To S3 Avg Time in milliseconds: <span id="RDSExportToS3AvgTimeinmilliseconds"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS DataProfiler Avg Time in milliseconds: <span id="RDSDataProfilerAvgTimeinmilliseconds"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator V2 Avg Time in milliseconds: <span id="RDSAggregatorV2AvgTimeinmilliseconds"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator Avg Time in milliseconds: <span id="RDSAggregatorAvgTimeinmilliseconds"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator Classification Result Aggregation Avg Time in milliseconds: <span id="RDSAggregatorClassificationResultAggregationAvgTimeinmilliseconds"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Total Avg Time in milliseconds: <span id="RDSTotalAvgTimeinmilliseconds"></span></h5>
-                    </div>
-                </div>
-                
-                <div id="compChargeRDS" style="display:none">
-                    <div class="mt-3">
-                        <h5>RDS Export To S3 Monthly Compute Charge: <span id="RDSExportToS3AvgMonthComp"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS DataProfiler Monthly Compute Charge: <span id="RDSDataProfilerMonthComp"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator V2 Monthly Compute Charge: <span id="RDSAggregatorV2MonthComp"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator Monthly Compute Charge: <span id="RDSAggregatorMonthComp"></span></h5>
-                    </div>
-                </div>
-                
-                <div id="reqChargeRDS" style="display:none">
-                    <div class="mt-3">
-                        <h5>RDS Export To S3 Monthly Request Charge: <span id="RDSExportToS3MonthReq"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS DataProfiler Monthly Request Charge: <span id="RDSDataProfilerMonthReq"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator V2 Monthly Request Charge: <span id="RDSAggregatorV2MonthReq"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator Monthly Request Charge: <span id="RDSAggregatorMonthReq"></span></h5>
-                    </div>
-                </div>
-                
-                <div id="totalChargeRDS" style="display:none">
-                    <div class="mt-3">
-                        <h5>RDS Export To S3 Total AWS Cost: <span id="RDSExportToS3TotalAWSCost"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS DataProfiler Total AWS Cost: <span id="RDSDataProfilerTotalAWSCost"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator V2 Total AWS Cost: <span id="RDSAggregatorV2TotalAWSCost"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>RDS Aggregator Total AWS Cost: <span id="RDSAggregatorTotalAWSCost"></span></h5>
-                    </div>
-                </div>
-                
-                <div class="mt-3" style="display:none">
-                    <h5>RDS Final AWS Cost: <span id="RDSTotalOfTotalAWSCost"></span></h5>
-                </div>
-                
+            <div class="mt-3">
+              <h5>
+                S3 Data Profiler Lambda Calls:
+                <span id="S3DataProfilerLamCalls"></span>
+              </h5>
             </div>
-            
-            <h5>Self Managed Cost</h5>
-            <div class="selfManaged container-fluid">
-                <div class="form-floating mt-3 NoOfEC2Instances">
-                    <input type="number" min=1 class="form-control" id="NoOfEC2Instances"
-                        placeholder="name@example.com">
-                    <label for="NoOfEC2Instances">Number of EC2 Instances</label>
-                </div><br>
-                <div class="form-floating NoOfVolumes">
-                    <input type="number" min=1 class="form-control" id="NoOfVolumes" placeholder="Password">
-                    <label for="NoOfVolumes">No Of Volumes</label>
-                </div><br>
-                <div class="form-floating SizeOfEBSVolumeInGBs">
-                    <input type="numer" min=1 class="form-control" id="SizeOfEBSVolumeInGBs" placeholder="Password">
-                    <label for="SizeOfEBSVolumeInGBs">Size of EBS Volume in GBs</label>
-                </div>
-                <div class="mt-3 container d-flex justify-content-evenly">
-                    <button class="btn btn-info me-1" id="displayLamCallsSelf">Display Self Lambda Calls</button>
-                    <button class="btn btn-info me-1" id="displayAvgTimeSelf">Display Self Average Time</button>
-                    <button class="btn btn-info me-1" id="displayCompAndReqChargeSelf">Display Self Compute and Request Charge</button>
-                </div>
-                    
-                <div id="lambdaCallsSelf" style="display:none">
-                    <div class="mt-3">
-                        <h5>Self managed List Region Lambda calls: <span id="C17"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self managed Cleanup prev run data Lambda calls: <span id="C18"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self managed List EBS volumes Lambda calls: <span id="C19"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self managed Take Snapshot Lambda calls: <span id="C20"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self managed Create Volume Lambda calls: <span id="C21"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self managed Run discovery script Lambda calls: <span id="C22"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self managed EBS Cleanup Lambda calls: <span id="C23"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self Managed Total Lambda Calls: <span id="C24"></span></h5>
-                    </div>
-                </div>
-                <div id="avgTimeSelf" style="display:none">
-                    <div class="mt-3">
-                        <h5>List Region Average Time in ms: <span id="D17"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Cleanup prev run data Average Time in ms: <span id="D18"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>List EBS volumes Average Time in ms: <span id="D19"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Take Snapshot Average Time in ms: <span id="D20"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Create Volume Average Time in ms: <span id="D21"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Run discovery script Average Time in ms2: <span id="D22"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>EBS Cleanup Average Time in ms: <span id="D23"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self Managed Total Average Time in ms: <span id="D24"></span></h5>
-                    </div>
-                </div>
-                <div id="compAndReqChargeSelf" style="display:none">
-                    <div class="mt-3">
-                        <h5>Self Managed Total Monthly Compute Charges: <span id="H24"></span></h5>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Self Managed Total Monthly Request Charges: <span id="I24"></span></h5>
-                    </div>
-                </div>
-                <div class="mt-3">
-                    <h5>Self Managed Final AWS Cost: <span id="J24"></span></h5>
-                </div>
-                </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator V2 Lambda Calls:
+                <span id="S3AggregatorV2LamCalls"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator Lambda Calls:
+                <span id="S3AggregatorLamCalls"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator Classification Result Aggregation Lambda Calls:
+                <span
+                  id="S3AggregatorClassificationResultAggregationLamCalls"
+                ></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>S3 Total Lambda Calls: <span id="S3TotalLamCalls"></span></h5>
+            </div>
+          </div>
+          <div id="avgTimeS3" style="display: none">
+            <div class="mt-3">
+              <h5>
+                S3 Discovery Average Time In ms:
+                <span id="S3DiscoveryAvgTimeInms"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 DataProfiler Average Time In ms:
+                <span id="S3DataProfilerAvgTimeInms"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator V2 Average Time In ms:
+                <span id="S3AggregatorV2AvgTimeInms"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator Average Time In ms:
+                <span id="S3AggregatorAvgTimeInms"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator Classification Result Aggregation Avg Time In ms:
+                <span
+                  id="S3AggregatorClassificationResultAggregationAvgTimeInms"
+                ></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>S3TotalAvgTimeInms: <span id="S3TotalAvgTimeInms"></span></h5>
+            </div>
+          </div>
+          <div id="computeChargeS3" style="display: none">
+            <div class="mt-3">
+              <h5>
+                S3 Discovery Month Compute Charge:
+                <span id="S3DiscoveryMonthComputeCharge"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 DataProfiler Month Compute Charge:
+                <span id="S3DataProfilerMonthComputeCharge"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator V2 Month Compute Charge:
+                <span id="S3AggregatorV2MonthComputeCharge"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator Month Compute Charge:
+                <span id="S3AggregatorMonthComputeCharge"></span>
+              </h5>
+            </div>
+          </div>
+          <div id="requestChargeS3" style="display: none">
+            <div class="mt-3">
+              <h5>
+                S3 Discovery Monthly Req Charge:
+                <span id="S3DiscoveryMonthlyReqCharge"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 DataProfiler Monthly Req Charge:
+                <span id="S3DataProfilerMonthlyReqCharge"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator V2 Monthly Req Charge:
+                <span id="S3AggregatorV2MonthlyReqCharge"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator Monthly Req Charge:
+                <span id="S3AggregatorMonthlyReqCharge"></span>
+              </h5>
+            </div>
+          </div>
+          <div id="totalChargeS3" style="display: none">
+            <div class="mt-3">
+              <h5>
+                S3 Discovery Total AWS Cost:
+                <span id="S3DiscoveryTotalAWSCost"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 DataProfiler Total AWS Cost:
+                <span id="S3DataProfilerTotalAWSCost"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator V2 Total AWS Cost:
+                <span id="S3AggregatorV2TotalAWSCost"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                S3 Aggregator Total AWS Cost:
+                <span id="S3AggregatorTotalAWSCost"></span>
+              </h5>
+            </div>
+          </div>
+          <div class="mt-3">
+            <h5>S3 Final AWS Cost: <span id="S3TotalOfTotalAWSCost"></span></h5>
+          </div>
         </div>
+
+        <h5>RDS Cost</h5>
+        <div class="RDS container-fluid">
+          <div class="form-floating mt-3 NoOfRDSInstancesOrClusters">
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              id="NoOfRDSInstancesOrClusters"
+              placeholder="name@example.com"
+            />
+            <label for="NoOfRDSInstancesOrClusters"
+              >Number of RDS Instance or Cluster</label
+            >
+          </div>
+          <br />
+          <div class="form-floating SizeOfDataInGB">
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              id="SizeOfDataInGB"
+              placeholder="Password"
+            />
+            <label for="SizeOfDataInGB">Size of data in GBs</label>
+          </div>
+          <br />
+          <div class="form-floating NumberOfTables">
+            <input
+              type="numer"
+              min="1"
+              class="form-control"
+              id="NumberOfTables"
+              placeholder="Password"
+            />
+            <label for="NumberOfTables">Number of tables</label>
+          </div>
+          <div class="mt-3 container d-flex justify-content-evenly">
+            <button class="btn btn-info me-1" id="displayLamCallsRDS">
+              Display RDS Lambda Calls
+            </button>
+            <button class="btn btn-info me-1" id="displayAvgTimeRDS">
+              Display RDS Average Time
+            </button>
+            <button class="btn btn-info me-1" id="displayCompChargeRDS">
+              Display RDS Compute Charges
+            </button>
+            <button class="btn btn-info me-1" id="displayreqChargeRDS">
+              Display RDS Request Charges
+            </button>
+            <button class="btn btn-info" id="displayTotalChargeRDS">
+              Display RDS Total Charges
+            </button>
+          </div>
+
+          <div id="lambdaCallsRDS" style="display: none">
+            <div class="mt-3">
+              <h5>
+                RDS Snapshot Lambda Calls:
+                <span id="RDSSnapshotLamCalls"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Export To S3 Lambda Calls:
+                <span id="RDSExportToS3LamCalls"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS DataProfiler Lambda Calls:
+                <span id="RDSDataProfilerLamCalls"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator V2 Lambda Calls:
+                <span id="RDSAggregatorV2LamCalls"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator Lambda calls:
+                <span id="RDSAggregatorLamcalls"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator Classification Result Aggregation Lambda calls:
+                <span
+                  id="RDSAggregatorClassificationResultAggregationLamcalls"
+                ></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Total Lambda calls: <span id="RDSTotalLamcalls"></span>
+              </h5>
+            </div>
+          </div>
+
+          <div id="avgTimeRDS" style="display: none">
+            <div class="mt-3">
+              <h5>
+                RDS Snapshot Avg Time in milliseconds:
+                <span id="RDSSnapshotAvgTimeinmilliseconds"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Export To S3 Avg Time in milliseconds:
+                <span id="RDSExportToS3AvgTimeinmilliseconds"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS DataProfiler Avg Time in milliseconds:
+                <span id="RDSDataProfilerAvgTimeinmilliseconds"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator V2 Avg Time in milliseconds:
+                <span id="RDSAggregatorV2AvgTimeinmilliseconds"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator Avg Time in milliseconds:
+                <span id="RDSAggregatorAvgTimeinmilliseconds"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator Classification Result Aggregation Avg Time in
+                milliseconds:
+                <span
+                  id="RDSAggregatorClassificationResultAggregationAvgTimeinmilliseconds"
+                ></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Total Avg Time in milliseconds:
+                <span id="RDSTotalAvgTimeinmilliseconds"></span>
+              </h5>
+            </div>
+          </div>
+
+          <div id="compChargeRDS" style="display: none">
+            <div class="mt-3">
+              <h5>
+                RDS Export To S3 Monthly Compute Charge:
+                <span id="RDSExportToS3AvgMonthComp"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS DataProfiler Monthly Compute Charge:
+                <span id="RDSDataProfilerMonthComp"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator V2 Monthly Compute Charge:
+                <span id="RDSAggregatorV2MonthComp"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator Monthly Compute Charge:
+                <span id="RDSAggregatorMonthComp"></span>
+              </h5>
+            </div>
+          </div>
+
+          <div id="reqChargeRDS" style="display: none">
+            <div class="mt-3">
+              <h5>
+                RDS Export To S3 Monthly Request Charge:
+                <span id="RDSExportToS3MonthReq"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS DataProfiler Monthly Request Charge:
+                <span id="RDSDataProfilerMonthReq"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator V2 Monthly Request Charge:
+                <span id="RDSAggregatorV2MonthReq"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator Monthly Request Charge:
+                <span id="RDSAggregatorMonthReq"></span>
+              </h5>
+            </div>
+          </div>
+
+          <div id="totalChargeRDS" style="display: none">
+            <div class="mt-3">
+              <h5>
+                RDS Export To S3 Total AWS Cost:
+                <span id="RDSExportToS3TotalAWSCost"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS DataProfiler Total AWS Cost:
+                <span id="RDSDataProfilerTotalAWSCost"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator V2 Total AWS Cost:
+                <span id="RDSAggregatorV2TotalAWSCost"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                RDS Aggregator Total AWS Cost:
+                <span id="RDSAggregatorTotalAWSCost"></span>
+              </h5>
+            </div>
+          </div>
+
+          <div class="mt-3" style="display: none">
+            <h5>
+              RDS Final AWS Cost: <span id="RDSTotalOfTotalAWSCost"></span>
+            </h5>
+          </div>
+        </div>
+
+        <h5>Self Managed Cost</h5>
+        <div class="selfManaged container-fluid">
+          <div class="form-floating mt-3 NoOfEC2Instances">
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              id="NoOfEC2Instances"
+              placeholder="name@example.com"
+            />
+            <label for="NoOfEC2Instances">Number of EC2 Instances</label>
+          </div>
+          <br />
+          <div class="form-floating NoOfVolumes">
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              id="NoOfVolumes"
+              placeholder="Password"
+            />
+            <label for="NoOfVolumes">No Of Volumes</label>
+          </div>
+          <br />
+          <div class="form-floating SizeOfEBSVolumeInGBs">
+            <input
+              type="numer"
+              min="1"
+              class="form-control"
+              id="SizeOfEBSVolumeInGBs"
+              placeholder="Password"
+            />
+            <label for="SizeOfEBSVolumeInGBs">Size of EBS Volume in GBs</label>
+          </div>
+          <div class="mt-3 container d-flex justify-content-evenly">
+            <button class="btn btn-info me-1" id="displayLamCallsSelf">
+              Display Self Lambda Calls
+            </button>
+            <button class="btn btn-info me-1" id="displayAvgTimeSelf">
+              Display Self Average Time
+            </button>
+            <button class="btn btn-info me-1" id="displayCompAndReqChargeSelf">
+              Display Self Compute and Request Charge
+            </button>
+          </div>
+
+          <div id="lambdaCallsSelf" style="display: none">
+            <div class="mt-3">
+              <h5>
+                Self managed List Region Lambda calls: <span id="C17"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Self managed Cleanup prev run data Lambda calls:
+                <span id="C18"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Self managed List EBS volumes Lambda calls:
+                <span id="C19"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Self managed Take Snapshot Lambda calls: <span id="C20"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Self managed Create Volume Lambda calls: <span id="C21"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Self managed Run discovery script Lambda calls:
+                <span id="C22"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Self managed EBS Cleanup Lambda calls: <span id="C23"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>Self Managed Total Lambda Calls: <span id="C24"></span></h5>
+            </div>
+          </div>
+          <div id="avgTimeSelf" style="display: none">
+            <div class="mt-3">
+              <h5>List Region Average Time in ms: <span id="D17"></span></h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Cleanup prev run data Average Time in ms: <span id="D18"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                List EBS volumes Average Time in ms: <span id="D19"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>Take Snapshot Average Time in ms: <span id="D20"></span></h5>
+            </div>
+            <div class="mt-3">
+              <h5>Create Volume Average Time in ms: <span id="D21"></span></h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Run discovery script Average Time in ms2: <span id="D22"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>EBS Cleanup Average Time in ms: <span id="D23"></span></h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Self Managed Total Average Time in ms: <span id="D24"></span>
+              </h5>
+            </div>
+          </div>
+          <div id="compAndReqChargeSelf" style="display: none">
+            <div class="mt-3">
+              <h5>
+                Self Managed Total Monthly Compute Charges:
+                <span id="H24"></span>
+              </h5>
+            </div>
+            <div class="mt-3">
+              <h5>
+                Self Managed Total Monthly Request Charges:
+                <span id="I24"></span>
+              </h5>
+            </div>
+          </div>
+          <div class="mt-3">
+            <h5>Self Managed Final AWS Cost: <span id="J24"></span></h5>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="mt-3">
-        <h5>Grand Total: <span id="J25"></span></h5>
+      <h5>Grand Total: <span id="J25"></span></h5>
     </div>
-        
-</body>
+  </body>
 </html>
 <script src="./app.js" type="module"></script>
 
